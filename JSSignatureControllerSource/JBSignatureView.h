@@ -9,6 +9,12 @@
 #import <UIKit/UIKit.h>
 
 @interface JBSignatureView : UIView
+{
+    NSMutableArray *handwritingCoords_;
+}
+
+// Holds the handwriting coordinates
+@property (nonatomic, strong) NSMutableArray *handwritingCoords;
 
 // Sets the stroke width
 @property(nonatomic) float lineWidth;
@@ -30,5 +36,8 @@
 
 // Clears the signature from the screen
 -(void)clearSignature;
+
+// Returns YES if signature entered
+-(BOOL)signatureEntered;
 
 @end

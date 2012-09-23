@@ -18,13 +18,18 @@
 @property(nonatomic,strong) UIImage *portraitBackgroundImage, *landscapeBackgroundImage;
 
 // Buttons for confirm and cancel
-@property(nonatomic,strong) UIButton *confirmButton, *cancelButton;
+@property(nonatomic, strong) UIButton *clearButton;
+//@property(nonatomic,strong) UIButton *cancelButton;
+//@property(nonatomic, strong) UIButton *confirmButton;
 
 // Delegate
 @property(nonatomic,weak) id<JBSignatureControllerDelegate> delegate;
 
-// Clear the signature
 -(void)clearSignature;
+-(UIImage *)signatureImage;
+-(BOOL)signatureEntered;
+- (NSMutableArray *)handwritingCoordinates;
+- (void)setHandWritingCoordinates:(NSMutableArray *)handwritingCoordinates;
 
 @end
 
@@ -33,12 +38,10 @@
 // Delegate Protocol
 @protocol JBSignatureControllerDelegate <NSObject>
 
-@required
-
+@optional
+  
 // Called when the user clicks the confirm button
 -(void)signatureConfirmed:(UIImage *)signatureImage signatureController:(JBSignatureController *)sender;
-
-@optional
 
 // Called when the user clicks the cancel button
 -(void)signatureCancelled:(JBSignatureController *)sender;

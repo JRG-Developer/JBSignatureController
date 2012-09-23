@@ -12,10 +12,9 @@
 
 #pragma mark - *** Private Interface ***
 
-@interface JBSignatureView() {
-
+@interface JBSignatureView()
+{
 @private
-	__strong NSMutableArray *handwritingCoords_;
 	__weak UIImage *currentSignatureImage_;
 	float lineWidth_;
 	float signatureImageMargin_;
@@ -23,8 +22,6 @@
 	__strong UIColor *foreColor_;
 	CGPoint lastTapPoint_;
 }
-
-@property(nonatomic,strong) NSMutableArray *handwritingCoords;
 
 -(void)processPoint:(CGPoint)touchLocation;
 
@@ -63,7 +60,21 @@ foreColor = foreColor_;
     return self;
 }
 
+/** You can effectively recreate a signature by saving the handwriting
+  * coordinates array and then using the setter below.
+  * @author Joshua Greene
+ **/
 
+#pragma mark - *** Set Handwriting Coordinates ***
+
+- (void)setHandwritingCoords:(NSMutableArray *)handwritingCoords
+{
+    if (handwritingCoords == handwritingCoords_)
+        return;
+    
+    handwritingCoords_ = handwritingCoords;
+    [self setNeedsDisplay];
+}
 
 #pragma mark - *** Drawing ***
 
@@ -240,7 +251,6 @@ foreColor = foreColor_;
 	// All done!
 	CFRelease(imageRef);
 	return signatureImageCropped;
-	
 }
 
 /**
@@ -252,6 +262,11 @@ foreColor = foreColor_;
 	[self.handwritingCoords removeAllObjects];
 	[self setNeedsDisplay];
 	
+}
+
+-(BOOL)signatureEntered
+{
+    return [self.handwritingCoords count] > 0;
 }
 
 
