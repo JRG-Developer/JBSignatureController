@@ -84,8 +84,8 @@ delegate = delegate_;
 	self.view = [[UIView alloc] initWithFrame:[[UIScreen mainScreen] applicationFrame]];
 	
 	// Background images
-    UIImage *portraitImage = [UIImage imageNamed:@"bg-signature-portrait" type:@"png" bundle:[NSBundle AppOrderCoreBundle]];
-    UIImage *landscapeImage = [UIImage imageNamed:@"bg-signature-landscape" type:@"png" bundle:[NSBundle AppOrderCoreBundle]];
+    UIImage *portraitImage = [UIImage imageNamed:@"bg-signature-portrait" bundle:[NSBundle AppOrderCoreBundle]];
+    UIImage *landscapeImage = [UIImage imageNamed:@"bg-signature-landscape" bundle:[NSBundle AppOrderCoreBundle]];
 
 	self.portraitBackgroundImage = portraitImage;
 	self.landscapeBackgroundImage = landscapeImage;
