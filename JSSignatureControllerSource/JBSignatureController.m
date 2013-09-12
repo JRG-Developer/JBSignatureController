@@ -90,6 +90,7 @@ delegate = delegate_;
 	self.portraitBackgroundImage = portraitImage;
 	self.landscapeBackgroundImage = landscapeImage;
 	self.signaturePanelBackgroundImageView = [[UIImageView alloc] initWithImage:self.portraitBackgroundImage];
+    [self.signaturePanelBackgroundImageView setUserInteractionEnabled:NO];
 	
 	// Signature view
 	self.signatureView = [[JBSignatureView alloc] init];
