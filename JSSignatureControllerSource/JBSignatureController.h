@@ -10,17 +10,17 @@
 
 @protocol JBSignatureControllerDelegate;
 
-
-
 @interface JBSignatureController : UIViewController
 
-// Allows you to set th background images in different states
+// Allows you to set the background images in different states
 @property(nonatomic,strong) UIImage *portraitBackgroundImage, *landscapeBackgroundImage;
 
 // Buttons for confirm and cancel
 @property(nonatomic, strong) UIButton *clearButton;
 //@property(nonatomic,strong) UIButton *cancelButton;
 //@property(nonatomic, strong) UIButton *confirmButton;
+
+@property (nonatomic) BOOL hideClearButton;
 
 // Delegate
 @property(nonatomic,weak) id<JBSignatureControllerDelegate> delegate;

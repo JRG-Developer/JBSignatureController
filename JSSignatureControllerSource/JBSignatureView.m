@@ -25,6 +25,8 @@
 
 -(void)processPoint:(CGPoint)touchLocation;
 
+- (void)commonInit;
+
 @end
 
 
@@ -49,15 +51,27 @@ foreColor = foreColor_;
 - (id)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
-		self.handwritingCoords = [[NSMutableArray alloc] init];
-		self.lineWidth = 5.0f;
-		self.signatureImageMargin = 10.0f;
-		self.shouldCropSignatureImage = YES;
-		self.foreColor = [UIColor blackColor];
-		self.backgroundColor = [UIColor clearColor];
-		lastTapPoint_ = CGPointZero;
+        [self commonInit];
     }
     return self;
+}
+
+- (id)initWithCoder:(NSCoder *)aDecoder {
+    self = [super initWithCoder:aDecoder];
+    if (self) {
+        [self commonInit];
+    }
+    return self;
+}
+
+- (void)commonInit {
+    self.handwritingCoords = [[NSMutableArray alloc] init];
+    self.lineWidth = 5.0f;
+    self.signatureImageMargin = 10.0f;
+    self.shouldCropSignatureImage = YES;
+    self.foreColor = [UIColor blackColor];
+    self.backgroundColor = [UIColor clearColor];
+    lastTapPoint_ = CGPointZero;
 }
 
 /** You can effectively recreate a signature by saving the handwriting

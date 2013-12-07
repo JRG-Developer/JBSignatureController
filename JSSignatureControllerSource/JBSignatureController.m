@@ -105,16 +105,19 @@ delegate = delegate_;
 //											self.confirmButton.frame.size.height)];
 //	[self.confirmButton setAutoresizingMask:UIViewAutoresizingFlexibleLeftMargin];
 	
-	// Cancel
-	self.clearButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-	[self.clearButton setTitle:@"Clear" forState:UIControlStateNormal];
-	[self.clearButton sizeToFit];
-	[self.clearButton setFrame:CGRectMake(10.0f,
-										   10.0f, 
-										   self.clearButton.frame.size.width,
-										   self.clearButton.frame.size.height)];
-	[self.clearButton setAutoresizingMask:UIViewAutoresizingFlexibleRightMargin];
-	
+	// Clear
+    
+    if (!self.hideClearButton)
+    {
+        self.clearButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+        [self.clearButton setTitle:@"Clear" forState:UIControlStateNormal];
+        [self.clearButton sizeToFit];
+        [self.clearButton setFrame:CGRectMake(10.0f,
+                                              10.0f,
+                                              self.clearButton.frame.size.width,
+                                              self.clearButton.frame.size.height)];
+        [self.clearButton setAutoresizingMask:UIViewAutoresizingFlexibleRightMargin];
+    }
 }
 
 /**
